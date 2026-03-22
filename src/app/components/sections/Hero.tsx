@@ -15,6 +15,10 @@ interface HeroProps {
 
 export function Hero({ heroRef, scrollToSection, contactRef }: HeroProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedRole, setDisplayedRole] = useState('');
+  const [isDeletingRole, setIsDeletingRole] = useState(false);
+  const roles = ['Website Desginer', 'Ux researchers', 'Problem solve'];
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -26,6 +30,32 @@ export function Hero({ heroRef, scrollToSection, contactRef }: HeroProps) {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+
+    const timeoutId = window.setTimeout(() => {
+      if (!isDeletingRole && displayedRole.length < currentRole.length) {
+        setDisplayedRole(currentRole.slice(0, displayedRole.length + 1));
+        return;
+      }
+
+      if (!isDeletingRole && displayedRole.length === currentRole.length) {
+        setIsDeletingRole(true);
+        return;
+      }
+
+      if (isDeletingRole && displayedRole.length > 0) {
+        setDisplayedRole(currentRole.slice(0, displayedRole.length - 1));
+        return;
+      }
+
+      setIsDeletingRole(false);
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+    }, isDeletingRole ? 70 : displayedRole.length === currentRole.length ? 1200 : 110);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [currentRoleIndex, displayedRole, isDeletingRole, roles]);
 
   const socialLinks = [
     {
@@ -233,7 +263,7 @@ export function Hero({ heroRef, scrollToSection, contactRef }: HeroProps) {
             duration: 3 + i,
             repeat: Infinity,
             ease: 'easeInOut',
-            delay: i * 0.2,
+            delay: i * 0.3,
           }}
         />
       ))}
@@ -253,9 +283,12 @@ export function Hero({ heroRef, scrollToSection, contactRef }: HeroProps) {
             <p className="font-['Kumbh_Sans:Medium',sans-serif] text-[24px] sm:text-[32px] lg:text-[42px] text-[#b4b4b4]">
               Md Rifat Hossain
             </p>
-            <p className="bg-clip-text bg-gradient-to-b font-['Kumbh_Sans:Bold',sans-serif] font-bold from-[#ff7539] text-[32px] sm:text-[48px] lg:text-[64px] text-transparent to-[#b26cb8] leading-tight">
-              UI/UX designer I
-            </p>
+            <div className="min-h-[48px] sm:min-h-[72px] lg:min-h-[96px]">
+              <p className="bg-clip-text bg-gradient-to-b font-['Kumbh_Sans:Bold',sans-serif] font-bold from-[#ff7539] text-[32px] sm:text-[48px] lg:text-[64px] text-transparent to-[#b26cb8] leading-tight">
+                {displayedRole}
+                <span className="ml-1 inline-block h-[0.9em] w-[2px] animate-pulse bg-[#ff7539] align-[-0.1em]" />
+              </p>
+            </div>
           </div>
 
           {/* Social Icons */}

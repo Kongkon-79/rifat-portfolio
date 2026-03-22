@@ -90,8 +90,8 @@ export function DesignProcess({ processRef }: DesignProcessProps) {
               whileHover={{ scale: 1.02 }}
               className="flex gap-[14px] sm:gap-[16px] items-start cursor-pointer"
             >
-              <div className="border-2 border-[#ff6b35] rounded-full size-[56px] sm:size-[60px] relative shrink-0">
-                <div className="absolute left-[4px] top-[4px] bg-gradient-to-b from-[#ff6b35] to-[#8b5cf6] rounded-full size-[48px] sm:size-[52px] shadow-lg flex items-center justify-center">
+              <div className="border-2 border-[#ff6b35] rounded-full size-[56px] sm:size-[60px] relative shrink-0 animate-[design-process-border-blink_1.6s_ease-in-out_infinite]">
+                <div className="absolute inset-1 bg-gradient-to-b from-[#ff6b35] to-[#8b5cf6] rounded-full shadow-lg flex items-center justify-center">
                   <step.Icon className="size-[22px] sm:size-[24px] text-white" />
                 </div>
               </div>
@@ -123,8 +123,8 @@ export function DesignProcess({ processRef }: DesignProcessProps) {
             >
               {step.side === 'right' ? (
                 <>
-                  <div className="border-2 border-[#ff6b35] rounded-full size-[68px] lg:size-[73.721px] relative shrink-0">
-                    <div className="absolute left-[4.5px] lg:left-[4.86px] top-[4.5px] lg:top-[4.86px] bg-gradient-to-b from-[#ff6b35] to-[#8b5cf6] rounded-full size-[59px] lg:size-[64px] shadow-[0px_10px_15px_0px_rgba(0,0,0,0.1),0px_4px_6px_0px_rgba(0,0,0,0.1)] flex items-center justify-center">
+                  <div className="border-2 border-[#ff6b35] rounded-full size-[68px] lg:size-[73.721px] relative shrink-0 animate-[design-process-border-blink_1.6s_ease-in-out_infinite]">
+                    <div className="absolute inset-[4.5px] lg:inset-[4.86px] bg-gradient-to-b from-[#ff6b35] to-[#8b5cf6] rounded-full shadow-[0px_10px_15px_0px_rgba(0,0,0,0.1),0px_4px_6px_0px_rgba(0,0,0,0.1)] flex items-center justify-center">
                       <step.Icon className="size-[28px] lg:size-[32px] text-white" />
                     </div>
                   </div>
@@ -140,13 +140,13 @@ export function DesignProcess({ processRef }: DesignProcessProps) {
                 <>
                   <div className="flex flex-col gap-[6px] lg:gap-[8px] text-right">
                     <p className="font-['Kumbh_Sans:Bold',sans-serif] text-[50px] lg:text-[60px] text-[#f1f1f1] leading-none">
-                      {step.num}
+                      {step.num} 
                     </p>
                     <p className="font-['Kumbh_Sans:Bold',sans-serif] text-[26px] lg:text-[30px] text-[#f1f1f1]">{step.title}</p>
                     <p className="font-['Kumbh_Sans:Regular',sans-serif] text-[16px] lg:text-[18px] text-[#9f9f9f]">{step.desc}</p>
                   </div>
-                  <div className="border-2 border-[#ff6b35] rounded-full size-[68px] lg:size-[73.721px] relative shrink-0">
-                    <div className="absolute left-[4.5px] lg:left-[4.86px] top-[4.5px] lg:top-[4.86px] bg-gradient-to-b from-[#ff6b35] to-[#8b5cf6] rounded-full size-[59px] lg:size-[64px] shadow-[0px_10px_15px_0px_rgba(0,0,0,0.1),0px_4px_6px_0px_rgba(0,0,0,0.1)] flex items-center justify-center">
+                  <div className="border-2 border-[#ff6b35] rounded-full size-[68px] lg:size-[73.721px] relative shrink-0 animate-[design-process-border-blink_1.6s_ease-in-out_infinite]">
+                    <div className="absolute inset-[4.5px] lg:inset-[4.86px] bg-gradient-to-b from-[#ff6b35] to-[#8b5cf6] rounded-full shadow-[0px_10px_15px_0px_rgba(0,0,0,0.1),0px_4px_6px_0px_rgba(0,0,0,0.1)] flex items-center justify-center">
                       <step.Icon className="size-[28px] lg:size-[32px] text-white" />
                     </div>
                   </div>
